@@ -1,0 +1,15 @@
+{
+  "name": "vatjs",
+  "version": "0.0.0",
+  "description": "A simple node.js app to perform a VAT query",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Marcus Kida",
+  "license": "MIT",
+  "dependencies": {
+    "soap": "~0.2.7"
+  }
+}
