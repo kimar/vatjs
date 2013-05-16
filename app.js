@@ -5,26 +5,37 @@ var http = require('http'),
 
 http.createServer(function(req, res) {
 
-	var vatid = path.normalize(decodeURI(url.parse(req.url).pathname)).toString();
+	var vatid;
+	var args;
 
-	var args = {countryCode: vatid.slice(1,3), vatNumber: vatid.slice(3)};
-  	soap.createClient('http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl', function(err, client) {
-      	client.checkVat(args, function(err, result) {
-          	console.log(result);
+	try {
+		vatid = path.normalize(decodeURI(url.parse(req.url).pathname)).toString();
+		args = {countryCode: vatid.slice(1,3), vatNumber: vatid.slice(3)};
 
-          	if(err) {
+		soap.createClient('http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl', function(err, client) {
+	     	client.checkVat(args, function(err, result) {
+	          	console.log(result);
 
-          		res.writeHead(400, {'Content-Type': 'application/json'});
-  				res.end(JSON.stringify({result: 'error', description: 'checkVatService does not accept this request (please check VATID)'})); 
+	          	if(err) {
 
-          	}
-          	else {
+	          		res.writeHead(400, {'Content-Type': 'application/json'});
+	  				res.end(JSON.stringify({result: 'error', description: 'checkVatService does not accept this request (please check VATID)'})); 
 
-          		res.writeHead(200, {'Content-Type': 'application/json'});
-  				res.end(JSON.stringify({result: 'ok', description: 'checkVatService responds correctly', details: {countryCode: result.countryCode, vatNumber: result.vatNumber, requestDate: result.requestDate, valid: result.valid, name: result.name, address: result.address}})); 
+	          	}
+	          	else {
 
-          	}
-      	});
-  	});
+	          		res.writeHead(200, {'Content-Type': 'application/json'});
+	  				res.end(JSON.stringify({result: 'ok', description: 'checkVatService responds correctly', details: {countryCode: result.countryCode, vatNumber: result.vatNumber, requestDate: result.requestDate, valid: result.valid, name: result.name, address: result.address}})); 
+
+	          	}
+	      	});
+	  	});
+	}
+	catch (e) {
+		res.writeHead(400, {'Content-Type': 'application/json'});
+  		res.end(JSON.stringify({result: 'error', description: 'The request URI seems to be invalid, please check'})); 
+	}
+
+  	
 
 }).listen(3000);
