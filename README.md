@@ -13,7 +13,7 @@ At the time of writing this, there is an unfixed issue in the node soap module w
 
 ```
 npm install
-cd node_modules && rm -rf soap && git clone https://github.com/jobe451/node-soap soap && cd ..
+cd node_modules && rm -rf soap && git clone https://github.com/kimar/node-soap.git soap && cd ..
 ```
 
 Now start the app using the node command:
