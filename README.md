@@ -2,8 +2,21 @@
 ### Please note
 Due to some unmerged bugs / pull requests (regarding a WSDL desctiption inside the WSDL uri) in node **soap** module i had to hard-core include this fork of it [https://github.com/jobe451/node-soap](https://github.com/jobe451/node-soap), i would like to remove and add it as an npm dependencie as soon as this bug will be fixed.
 
-Clone and start using node command:
+Clone this repository
 
+```
+git clone https://github.com/kimar/vatjs.git
+```
+
+
+At the time of writing this, there is an unfixed issue in the node soap module which let's soap fail to do a request on the vat service wsdl. To resolve this you have to do the following:
+
+```
+npm install
+cd node_modules && rm -rf soap && git clone https://github.com/jobe451/node-soap soap && cd ..
+```
+
+Now start the app using the node command:
 
 ```
 node app.js
