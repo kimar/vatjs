@@ -9,7 +9,7 @@ git clone https://github.com/kimar/vatjs.git
 ```
 
 
-At the time of writing this, there is an unfixed issue in the node soap module which let's soap fail to do a request on the vat service wsdl. To resolve this you have to do the following:
+At the time of writing this, there is an unfixed issue in the node soap module which let's soap fail to do a request on the vat service wsdl. [jobe451](https://github.com/jobe451) has provided a fix for this, thank you guy! To resolve this you have to do the following:
 
 ```
 npm install
