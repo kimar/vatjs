@@ -60,7 +60,7 @@ The server should respond respectively:
 }
 ```
 
-This App uses the EU-VAT-ID Check API SOAP WebService, if the VAT-ID belongs to an individual, no Name / Address will be displayed (only three dashes), if it belongs to a company, the Name / Address will be shown.
+This App uses the EU-VAT-ID Check API SOAP WebService, depending on the VAT-IDs Country and other parameters, sometimes the full Name / Address is shown, sometime it's not. This is not a bug ;-)
 
 **The MIT License (MIT)**
 
