@@ -9,6 +9,7 @@ http = require('http'),
 path = require('path'),
 api = require('./routes/api'),
 documentation = require('./routes/documentation'),
+about = require('./routes/about'),
 connectError = require('connect-error');
 
 var app = express();
@@ -59,6 +60,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/documentation', documentation.index);
+app.get('/about', about.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

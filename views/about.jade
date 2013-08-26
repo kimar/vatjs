@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  div(class='navbar navbar-inverse navbar-fixed-top')
+    div(class='container')
+      div(class='navbar-header')
+        button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='.navbar-collapse')
+          span(class='icon-bar')
+          span(class='icon-bar')
+          span(class='icon-bar')
+        a(class='navbar-brand', href='/').
+          vatjs
+      div(class='collapse navbar-collapse')
+        ul(class='nav navbar-nav')
+          li
+            a(href='/').
+              Home
+          li
+            a(href='/documentation').
+              API
+          li(class='active')
+            a(href='#').
+              About
+  div(class='container')
+    div(class='starter-template')
+      h2.
+        About
+      p
+        | vatjs.org is an open-source project maintained by <a href="http://marcuskida.de" target="_blank">Marcus Kida</a>.<br />
+        | To check the VAT-IDs the EU's SOAP API is used.<br />
+        | Neither vatjs.org nor it's maintainer / creator will be held responsible for wrong information provided by perfomring VAT-ID checks.<br />
+        | This is a free service, a guarantee of it's availablility cannot be made.<br />
+        br
+        | This project is released under
+        h4
+          | The MIT License (MIT)
+          br
+        | Copyright (c) 2013 Marcus Kida
+        br
+        br
+        | Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        br
+        br
+        | The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        br
+        br
+        | THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,11 +1,16 @@
 doctype 5
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
-    link(rel='stylesheet', href='/stylesheets/main.css')
-    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+  title= title
+  link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+  link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+  link(rel='stylesheet', href='/stylesheets/main.css')
+  link(rel='stylesheet', href='/stylesheets/gh-fork-ribbon.css')
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
   body
-    block content
-    script(src='javascripts/bootstrap.min.js')
+  block content
+  script(src='javascripts/bootstrap.min.js')
+  div(class='github-fork-ribbon-wrapper right')
+    div(class='github-fork-ribbon')
+      a(href="https://github.com/kimar/vatjs", target='_blank')
+        | Fork me on GitHub
