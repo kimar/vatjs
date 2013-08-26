@@ -6,7 +6,7 @@ Due to some unmerged bugs / pull requests (regarding a WSDL desctiption inside t
 
 ![Screenshot](http://kimar.github.io/screenshots/vatjs/1.0.0/vatjs1.png)
 ![Screenshot](http://kimar.github.io/screenshots/vatjs/1.0.0/vatjs2.png)
-![Screenshot](http://kimar.github.io/screenshots/vatjs/1.0.0/vatjs2.png)
+![Screenshot](http://kimar.github.io/screenshots/vatjs/1.0.0/vatjs3.png)
 
 Clone this repository
 
