@@ -26,6 +26,12 @@ Now start the app using the node command:
 node app.js
 ```
 
+Optionally do some configuration
+
+```
+vim config.json
+```
+
 Open up your browser, enter a VAT-ID and check it...
 
 ```

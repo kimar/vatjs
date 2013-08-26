@@ -11,6 +11,7 @@ api = require('./routes/api'),
 documentation = require('./routes/documentation'),
 about = require('./routes/about'),
 connectError = require('connect-error');
+config = require('./config.json');
 
 var app = express();
 
@@ -23,6 +24,11 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(function(req, res, next) {
+  if(!req.vatjs) { req.vatjs = {}; }
+  if(!req.vatjs.serverUri) { req.vatjs.serverUri = config.serverUri; }
+  next();
+});
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -64,4 +70,5 @@ app.get('/about', about.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+  console.log('Server URI: ' + config.serverUri);
 });
