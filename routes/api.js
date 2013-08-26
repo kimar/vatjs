@@ -6,9 +6,7 @@ exports.check = function (req, res) {
 
 		vatid = path.basename(decodeURI(url.parse(req.url).pathname)).toString();
 		args = {countryCode: vatid.slice(0, 2), vatNumber: vatid.slice(2)};
-		console.log('vatid: ' + vatid);
-		console.log('args: ' + args);
-
+		
 		soap.createClient('http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl', function(err, client) {
 	     	client.checkVat(args, function(err, result) {
 	     		res.set('Content-Type', 'application/json');
