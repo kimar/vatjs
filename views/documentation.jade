@@ -1,0 +1,70 @@
+extends layout
+
+block content
+  div(class='navbar navbar-inverse navbar-fixed-top')
+    div(class='container')
+      div(class='navbar-header')
+        button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='.navbar-collapse')
+          span(class='icon-bar')
+          span(class='icon-bar')
+          span(class='icon-bar')
+        a(class='navbar-brand', href='/').
+          vatjs
+      div(class='collapse navbar-collapse')
+        ul(class='nav navbar-nav')
+          li
+            a(href='/').
+              Home
+          li(class='active')
+            a(href='#').
+              API
+  div(class='container')
+    div(class='starter-template')
+      h2.
+        API Documentation
+      p(class='lead').
+        vatjs.org has a REST Api which is freely available.
+        The Check-Endpoint as available at:
+      div(class='highlight')
+        pre(id='code-apidoc')
+          code(class='html')
+            | http://#{server}/api/check
+      | To perform a VAT-ID check, just add the desired VAT-ID to the Check-Endpoint, e.g.:
+      div(class='highlight')
+        pre(id='code-apidoc')
+          code(class='html')
+            | http://#{server}/api/check/DE12345678901
+      | After the check has been <b>successfully</b> performed, the vatjs server will respond with an JSON-Object in the following format:
+      div(class='highlight')
+        pre(id='code-apidoc')
+          code(class='html')
+            = "{"
+            != "<br />"
+            = "  error: null,"
+            != "<br />"
+            = "  result: {"
+            != "<br />"
+            = "   countryCode: \"DE\","
+            != "<br />"
+            = "   vatNumber: \"12345678901\","
+            != "<br />"
+            = "   requestDate: \"2013-08-26+02:00\","
+            != "<br />"
+            = "   valid: true,"
+            != "<br />"
+            = "   name: \"---\","
+            != "<br />"
+            = "   address: \"---\""
+            != "<br />"
+            = "  }"
+            != "<br />"
+            = "}"
+      | In case an <b>error</b> occured , the vatjs server will respond like this:
+      div(class='highlight')
+        pre(id='code-apidoc')
+          code(class='html')
+            = "{"
+            != "<br />"
+            = "  error: \"invalid request\""
+            != "<br />"
+            = "}"

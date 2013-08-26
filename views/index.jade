@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  div(class='navbar navbar-inverse navbar-fixed-top')
+    div(class='container')
+      div(class='navbar-header')
+        button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='.navbar-collapse')
+          span(class='icon-bar')
+          span(class='icon-bar')
+          span(class='icon-bar')
+        a(class='navbar-brand', href='#').
+          vatjs
+      div(class='collapse navbar-collapse')
+        ul(class='nav navbar-nav')
+          li(class='active')
+            a(href='#').
+              Home
+          li
+            a( href='/documentation').
+              API
+  div(class='container')
+    div(class='starter-template')
+      div(class='alert alert-danger', id='check-alert', style='display:none')
+      script(type='text/javascript')
+        $('#check-alert').click(function(){
+          $('#check-alert').fadeOut();
+        });
+      h1
+        | Welcome to vatjs.org
+        p(class='lead')
+          | Enter the desired VAT-ID below to perform a live-check.
+      input(type='text', id='check-input', class='form-control', placeholder='VAT-ID', autofocus)
+      button(class='btn btn-lg btn-primary btn-block', id='check-button')
+        | Check VAT-ID for validity
+      div(class='vatid-result', id='check-result', style='display:none')
+      script(type='text/javascript').
+        $('#check-button').click(function(){
+          $('#check-input').css({'background': 'url(/images/ajax-loader.gif) no-repeat center center'});
+          $.ajax({
+            url: '/api/check/' + $('#check-input').val(),
+            context: document.body
+          }).done(function(res) {
+            $('#check-input').css({'background': ''});
+            $('#check-alert').fadeOut();
+            $('#check-result').html('<b>Valid:</b> ' + (res.result.valid?'<img src="/images/check.png" height="15px" />':'<img src="/images/cancel.png" height="15px" />') + '<br /><b>Name:</b> ' + res.result.name + '<br /><b>Address:</b> ' + res.result.address).fadeIn();
+          }).error(function() {
+            $('#check-input').css({'background': ''});
+            $('#check-result').fadeOut();
+            $('#check-alert').text('There has been an error performing your request, please check your VAT-ID and try again.').fadeIn();
+          });
+        });

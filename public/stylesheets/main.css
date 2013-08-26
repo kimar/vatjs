@@ -1,0 +1,39 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.form-control {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.btn {
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.vatid-result {
+  max-width: 330px;
+  font-size: 12.0px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background: #efefef;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: left;
+}
+
+#check-input {
+  margin: 10px auto;
+  margin-bottom: 10px;
+}
+
+#code-apidoc {
+  text-align: left;
+}

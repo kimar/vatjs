@@ -1,6 +1,12 @@
 # vatjs
+### version 1.0.0
 ### Please note
-Due to some unmerged bugs / pull requests (regarding a WSDL desctiption inside the WSDL uri) in node **soap** module i had to hard-core include this fork of it [https://github.com/jobe451/node-soap](https://github.com/jobe451/node-soap), i would like to remove and add it as an npm dependencie as soon as this bug will be fixed.
+
+Due to some unmerged bugs / pull requests (regarding a WSDL desctiption inside the WSDL uri) in node **soap** module I forked, and morged some bugfixes into it, node-soap inside the package.json now points to [my node-soap fork ](https://github.com/kimar/node-soap)
+
+![Screenshot](http://kimar.github.io/screenshots/vatjs/1.0.0/vatjs1.png)
+![Screenshot](http://kimar.github.io/screenshots/vatjs/1.0.0/vatjs2.png)
+![Screenshot](http://kimar.github.io/screenshots/vatjs/1.0.0/vatjs2.png)
 
 Clone this repository
 
@@ -8,12 +14,10 @@ Clone this repository
 git clone https://github.com/kimar/vatjs.git
 ```
 
-
-At the time of writing this, there is an unfixed issue in the node soap module which let's soap fail to do a request on the vat service wsdl. [jobe451](https://github.com/jobe451) has provided a fix for this, thank you guy! To resolve this you have to do the following:
+Install all dependencies
 
 ```
 npm install
-cd node_modules && rm -rf soap && git clone https://github.com/kimar/node-soap.git soap && cd ..
 ```
 
 Now start the app using the node command:
@@ -22,25 +26,42 @@ Now start the app using the node command:
 node app.js
 ```
 
-Open up your browser and attach the VAT-ID to your URI:
+Open up your browser, enter a VAT-ID and check it...
 
 ```
-http://0.0.0.0:3000/IT02442790214
+http://0.0.0.0:3000
+```
+
+Or use the RESET-Service in your Apps:
+
+```
+http://0.0.0.0:3000/api/check/IT02442790214
 ```
 
 The server should respond respectively:
 
 ```
 {
-	result: "ok",
-	description: "checkVatService responds correctly",
+	error: null,
 	details: {
-		countryCode: "IT",
-		vatNumber: "02442790214",
-		requestDate: "2013-05-16+02:00",
+		countryCode: "DE",
+		vatNumber: "12345678901",
+		requestDate: "2013-08-26+02:00",
 		valid: true,
-		name: "GABRIEL GRITSCH SOFTWARE DEVELOPMENT",
-		address: "VIA TERZO DI SOTTO 1639042 BRESSANONE .BRIXEN. BZ"
+		name: "---",
+		address: "---"
 	}
 }
 ```
+
+This App uses the EU-VAT-ID Check API SOAP WebService, if the VAT-ID belongs to an individual, no Name / Address will be displayed (only three dashes), if it belongs to a company, the Name / Address will be shown.
+
+**The MIT License (MIT)**
+
+Copyright (c) 2013 Marcus Kida
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
