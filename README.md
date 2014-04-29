@@ -20,6 +20,12 @@ Install all dependencies
 npm install
 ```
 
+Copy config.example.json and modify serverUri:
+
+```
+cp config.example.json config.json && vim config.json
+```
+
 Now start the app using the node command:
 
 ```
